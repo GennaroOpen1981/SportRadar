@@ -1,0 +1,33 @@
+# Compiled class file
+*.class
+*.iml
+.idea
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+dependency-reduced-pom.xml
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+*.tar.gz
+*.rar
+
+# Maven
+target/
+
+# Deps
+!local-repo/**/*.jar
+
+
+
+*.bak

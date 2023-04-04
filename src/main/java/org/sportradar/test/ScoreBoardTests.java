@@ -4,13 +4,17 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.sportradar.pojo.Game;
 import org.sportradar.services.Scoreboard;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Set;
 
 public class ScoreBoardTests {
+    private static final Logger log = LoggerFactory.getLogger(ScoreBoardTests.class);
+
     @Test
     public void testStartNewGame() {
-        System.out.println("ScoreBoardTests test Assert 5 games");
+        log.info("ScoreBoardTests test Assert 5 games");
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startNewGame("Mexico", "Canada");
         scoreboard.startNewGame("Brasil", "Spain");
