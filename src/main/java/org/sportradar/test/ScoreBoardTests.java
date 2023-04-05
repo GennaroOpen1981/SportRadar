@@ -75,5 +75,24 @@ public class ScoreBoardTests {
         Assert.assertEquals(1, scoreboard.getScoreBoard().size());
     }
 
+    @Test
+    public void testGetSummaryOfGames() {
+        log.info("testGetSummaryOfGames");
+        Scoreboard scoreboard = new Scoreboard();
+        Game g0 = scoreboard.startNewGame("Spain", "France");
+        g0.sethScore(13);
+        g0.setaScore(13);
+        g0.calculateTotScore();
+        Game g1 = scoreboard.startNewGame("Mexico", "Canada");
+        g1.sethScore(1);
+        g1.setaScore(1);
+        g1.calculateTotScore();
+        Game g2 = scoreboard.startNewGame("Ireland", "Malta");
+        g2.sethScore(3);
+        g2.setaScore(4);
+        g2.calculateTotScore();
+        scoreboard.getSummaryOfGames();
+
+    }
 
 }

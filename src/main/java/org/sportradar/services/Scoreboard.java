@@ -1,11 +1,12 @@
 package org.sportradar.services;
 
+import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sportradar.pojo.Game;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.text.ParseException;
+import java.util.*;
 
 
 public class Scoreboard {
@@ -48,8 +49,41 @@ public class Scoreboard {
 
     }
 
-    void getSummaryOfGames() {
+
+    public static SortedSet<Game> sortByTotScore(
+            final Map<Game, Integer> gameTotScoreMap) {
+        TreeSet<Game> sortedGamess = new TreeSet<Game>(
+                new Comparator<Game>() {
+                    @Override
+                    public int compare(Game game1, Game game2) {
+                        try {
+                            int compareByScore = gameTotScoreMap.get(game1).compareTo(
+                                    gameTotScoreMap.get(game2));
+                            if (compareByScore != 0) {
+                                return compareByScore;
+                            }
+
+                            return game1.compareDateTo(game2);
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+                });
+        sortedGamess.addAll(gameTotScoreMap.keySet());
+        return sortedGamess.descendingSet();
+    }
+
+    public SortedSet<Game> getSummaryOfGames() {
         log.debug("getSummaryOfGames");
+        final Map<Game, Integer> m = new HashMap<Game, Integer>();
+        Set<Game> sg = this.getScoreBoard();
+
+        for (Game game : sg) {
+            m.put(game, game.getTotScore());
+        }
+        SortedSet<Game> out = sortByTotScore(m);
+        return out;
 
     }
 }
