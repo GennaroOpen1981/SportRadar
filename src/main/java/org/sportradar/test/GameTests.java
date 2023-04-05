@@ -31,4 +31,24 @@ public class GameTests {
         log.info("testCompareGame Output, most recently started game is game n: " + game1.compareDateTo(game2) + "\n");
         Assert.assertNotEquals(1, game1.compareDateTo(game2));
     }
+
+    @Test
+    public void testNotEqualsCalculateTotScore() throws ParseException, InterruptedException {
+        log.info("testNotEqualsCalculateTotScore");
+        Game game1 = new Game("Mexico", "Canada");
+        game1.setaScore(1);
+        game1.sethScore(4);
+        game1.calculateTotScore();
+        Assert.assertNotEquals(1, game1.getTotScore());
+    }
+
+    @Test
+    public void testEqualsCalculateTotScore() throws ParseException, InterruptedException {
+        log.info("testEqualsCalculateTotScore");
+        Game game1 = new Game("Mexico", "Canada");
+        game1.setaScore(1);
+        game1.sethScore(4);
+        game1.calculateTotScore();
+        Assert.assertEquals(5, game1.getTotScore());
+    }
 }

@@ -52,9 +52,7 @@ public class ScoreBoardTests {
         log.info("testUpdateScoreGame");
         Scoreboard scoreboard = new Scoreboard();
         Game g1 = scoreboard.startNewGame("Mexico", "Canada");
-        //Game g2 = scoreboard.startNewGame("Italy", "Spain");
         scoreboard.updateScore(1, 2, g1);
-        //scoreboard.updateScore(1, 5, g2);
         Set<Game> sg = scoreboard.getScoreBoard();
 
         for (Game game : sg) {

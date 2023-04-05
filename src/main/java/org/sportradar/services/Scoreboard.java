@@ -4,11 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sportradar.pojo.Game;
 
-import java.text.ParseException;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
+
 
 public class Scoreboard {
     private static final Logger log = LoggerFactory.getLogger(Scoreboard.class);
@@ -24,6 +22,7 @@ public class Scoreboard {
         Game game = new Game(homeTeam, awayTeam);
         game.sethScore(0);
         game.setaScore(0);
+        game.calculateTotScore();
         scoreBoard.add(game);
         return game;
     }
@@ -32,6 +31,7 @@ public class Scoreboard {
         log.debug("updateScore");
         game.sethScore(hScore);
         game.setaScore(aScore);
+        game.calculateTotScore();
     }
 
     public int areGamesEqual(Game g1, Game g2) {
@@ -50,5 +50,6 @@ public class Scoreboard {
 
     void getSummaryOfGames() {
         log.debug("getSummaryOfGames");
+
     }
 }

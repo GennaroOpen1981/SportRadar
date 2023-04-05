@@ -14,6 +14,7 @@ public class Game {
     private SimpleDateFormat dFormatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
     private String homeTeam;
+    private int totScore;
     private int hScore;
     private String awayTeam;
     private int aScore;
@@ -95,5 +96,12 @@ public class Game {
         this.startingDate = startingDate;
     }
 
+    public int getTotScore() {
+        return totScore;
+    }
+
+    public void calculateTotScore() {
+        this.totScore = aScore + hScore;
+    }
 
 }
