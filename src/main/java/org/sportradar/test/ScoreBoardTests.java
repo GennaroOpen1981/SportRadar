@@ -39,6 +39,15 @@ public class ScoreBoardTests {
     }
 
     @Test
+    public void testAreGamesEquals() {
+        log.info("testAreGamesEquals");
+        Scoreboard scoreboard = new Scoreboard();
+        Game g1 = scoreboard.startNewGame("Mexico", "Canada");
+        int res = scoreboard.areGamesEqual(g1, g1);
+        Assert.assertEquals(1, res);
+    }
+
+    @Test
     public void testUpdateScoreGame() {
         log.info("testUpdateScoreGame");
         Scoreboard scoreboard = new Scoreboard();
@@ -51,9 +60,9 @@ public class ScoreBoardTests {
         for (Game game : sg) {
             System.out.println(game.getHomeTeam());
             System.out.println(game.gethScore());
-            Assert.assertEquals(1,game.gethScore());
+            Assert.assertEquals(1, game.gethScore());
             System.out.println(game.getAwayTeam());
-            Assert.assertEquals(2,game.getaScore());
+            Assert.assertEquals(2, game.getaScore());
             System.out.println(game.getaScore());
         }
 

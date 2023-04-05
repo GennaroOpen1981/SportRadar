@@ -16,11 +16,7 @@ public class Scoreboard {
         @Override
         public int compare(Game g1, Game g2) {
             log.debug("compare");
-            try {
-                return g1.compareTo(g2);
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
+            return areGamesEqual(g1,g2);
         }
     });
 
@@ -43,8 +39,18 @@ public class Scoreboard {
         game.setaScore(aScore);
     }
 
-    void finishGame() {
+    public int areGamesEqual(Game g1, Game g2) {
+        int result = -1;
+        if (g1.getHomeTeam().equals(g2.getHomeTeam()) && g1.getAwayTeam().equals(g2.getAwayTeam()) && g1.getStartingDate().equals(g2.getStartingDate())) {
+            result = 1;
+        }
+        return result;
+    }
+
+    public void finishGame(Game game) {
         log.debug("finishGame");
+        scoreBoard.remove(game);
+
     }
 
     void getSummaryOfGames() {

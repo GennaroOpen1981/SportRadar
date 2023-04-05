@@ -28,7 +28,7 @@ public class Game {
         this.startingDate = dtf.format(now);
     }
 
-    public int compareTo(Game g) throws ParseException {
+    public int compareDateTo(Game g) throws ParseException {
         log.debug("compareTo");
         Date date1 = dFormatter.parse(this.getStartingDate());
         Date date2 = dFormatter.parse(g.getStartingDate());

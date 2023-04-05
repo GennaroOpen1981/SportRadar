@@ -18,8 +18,8 @@ public class GameTests {
         Game game1 = new Game("Mexico", "Canada");
         Thread.sleep(2 * 1000);
         Game game2 = new Game("Brasil", "Spain");
-        log.info("testCompareGame Output, most recently started game is game n: " + game1.compareTo(game2) + "\n");
-        Assert.assertEquals(2, game1.compareTo(game2));
+        log.info("testCompareGame Output, most recently started game is game n: " + game1.compareDateTo(game2) + "\n");
+        Assert.assertEquals(2, game1.compareDateTo(game2));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class GameTests {
         Game game1 = new Game("Mexico", "Canada");
         Thread.sleep(2 * 1000);
         Game game2 = new Game("Brasil", "Spain");
-        log.info("testCompareGame Output, most recently started game is game n: " + game1.compareTo(game2) + "\n");
-        Assert.assertNotEquals(1, game1.compareTo(game2));
+        log.info("testCompareGame Output, most recently started game is game n: " + game1.compareDateTo(game2) + "\n");
+        Assert.assertNotEquals(1, game1.compareDateTo(game2));
     }
 }
