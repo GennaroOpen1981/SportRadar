@@ -38,5 +38,27 @@ public class ScoreBoardTests {
         Assert.assertNotEquals(6, set.size());
     }
 
+    @Test
+    public void testUpdateScoreGame() {
+        log.info("testUpdateScoreGame");
+        Scoreboard scoreboard = new Scoreboard();
+        Game g1 = scoreboard.startNewGame("Mexico", "Canada");
+        //Game g2 = scoreboard.startNewGame("Italy", "Spain");
+        scoreboard.updateScore(1, 2, g1);
+        //scoreboard.updateScore(1, 5, g2);
+        Set<Game> sg = scoreboard.getScoreBoard();
+
+        for (Game game : sg) {
+            System.out.println(game.getHomeTeam());
+            System.out.println(game.gethScore());
+            Assert.assertEquals(1,game.gethScore());
+            System.out.println(game.getAwayTeam());
+            Assert.assertEquals(2,game.getaScore());
+            System.out.println(game.getaScore());
+        }
+
+
+    }
+
 
 }

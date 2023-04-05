@@ -28,16 +28,19 @@ public class Scoreboard {
         return scoreBoard;
     }
 
-    public void startNewGame(String homeTeam, String awayTeam) {
+    public Game startNewGame(String homeTeam, String awayTeam) {
         log.debug("startNewGame");
         Game game = new Game(homeTeam, awayTeam);
         game.sethScore(0);
         game.setaScore(0);
         scoreBoard.add(game);
+        return game;
     }
 
-    void updateScore() {
+    public void updateScore(int hScore, int aScore, Game game) {
         log.debug("updateScore");
+        game.sethScore(hScore);
+        game.setaScore(aScore);
     }
 
     void finishGame() {
