@@ -65,8 +65,16 @@ public class ScoreBoardTests {
             Assert.assertEquals(2, game.getaScore());
             System.out.println(game.getaScore());
         }
+    }
 
-
+    @Test
+    public void testFinishGame() {
+        log.info("testFinishGame");
+        Scoreboard scoreboard = new Scoreboard();
+        Game g1 = scoreboard.startNewGame("Mexico", "Canada");
+        Game g2 = scoreboard.startNewGame("Ireland", "Malta");
+        scoreboard.finishGame(g1);
+        Assert.assertEquals(1, scoreboard.getScoreBoard().size());
     }
 
 

@@ -6,19 +6,14 @@ import org.sportradar.pojo.Game;
 
 import java.text.ParseException;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Scoreboard {
     private static final Logger log = LoggerFactory.getLogger(Scoreboard.class);
 
-    Set<Game> scoreBoard = new TreeSet<>(new Comparator<Game>() {
-        @Override
-        public int compare(Game g1, Game g2) {
-            log.debug("compare");
-            return areGamesEqual(g1,g2);
-        }
-    });
+    Set<Game> scoreBoard = new HashSet<>();
 
     public Set<Game> getScoreBoard() {
         return scoreBoard;
