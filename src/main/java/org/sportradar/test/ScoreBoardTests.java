@@ -13,8 +13,8 @@ public class ScoreBoardTests {
     private static final Logger log = LoggerFactory.getLogger(ScoreBoardTests.class);
 
     @Test
-    public void testStartNewGame() {
-        log.info("ScoreBoardTests test Assert 5 games");
+    public void testEqualsStartNewGame() {
+        log.info("testEqualsStartNewGame test Assert 5 games");
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startNewGame("Mexico", "Canada");
         scoreboard.startNewGame("Brasil", "Spain");
@@ -23,6 +23,19 @@ public class ScoreBoardTests {
         scoreboard.startNewGame("Argentina", "Australia");
         Set<Game> set = scoreboard.getScoreBoard();
         Assert.assertEquals(5, set.size());
+    }
+
+    @Test
+    public void testNotEqualsStartNewGame() {
+        log.info("testNotEqualsStartNewGame test Assert 5 games not equals");
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startNewGame("Mexico", "Canada");
+        scoreboard.startNewGame("Brasil", "Spain");
+        scoreboard.startNewGame("Germany", "France");
+        scoreboard.startNewGame("Uruguay", "Italy");
+        scoreboard.startNewGame("Argentina", "Australia");
+        Set<Game> set = scoreboard.getScoreBoard();
+        Assert.assertNotEquals(6, set.size());
     }
 
 
