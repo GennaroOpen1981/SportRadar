@@ -23,7 +23,7 @@ dependency-reduced-pom.xml
 *.rar
 
 # Maven
-target/
+./target/
 
 # Deps
 !local-repo/**/*.jar
