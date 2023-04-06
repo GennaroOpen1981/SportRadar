@@ -7,7 +7,9 @@ import org.sportradar.services.Scoreboard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.ParseException;
 import java.util.Set;
+import java.util.SortedSet;
 
 public class ScoreBoardTests {
     private static final Logger log = LoggerFactory.getLogger(ScoreBoardTests.class);
@@ -76,7 +78,7 @@ public class ScoreBoardTests {
     }
 
     @Test
-    public void testGetSummaryOfGames() {
+    public void testGetSummaryOfGames() throws InterruptedException, ParseException {
         log.info("testGetSummaryOfGames");
         Scoreboard scoreboard = new Scoreboard();
         Game g0 = scoreboard.startNewGame("Spain", "France");
@@ -88,10 +90,30 @@ public class ScoreBoardTests {
         g1.setaScore(1);
         g1.calculateTotScore();
         Game g2 = scoreboard.startNewGame("Ireland", "Malta");
-        g2.sethScore(3);
+        g2.sethScore(34);
         g2.setaScore(4);
         g2.calculateTotScore();
-        scoreboard.getSummaryOfGames();
+        Game g3 = scoreboard.startNewGame("Andorra", "Rep Ceca");
+        g3.sethScore(135);
+        g3.setaScore(13);
+        g3.calculateTotScore();
+        Game g4 = scoreboard.startNewGame("India", "Cina");
+        g4.sethScore(0);
+        g4.setaScore(1);
+        g4.calculateTotScore();
+        Game g5 = scoreboard.startNewGame("England", "Croazia");
+        g5.sethScore(0);
+        g5.setaScore(4);
+        g5.calculateTotScore();
+        Thread.sleep(2 * 1000);
+        Game g6 = scoreboard.startNewGame("Svezia", "Albania");
+        g6.sethScore(0);
+        g6.setaScore(4);
+        g6.calculateTotScore();
+        SortedSet<Game> out = scoreboard.getSummaryOfGames();
+        for (Game g : out) {
+            System.out.println("totScore : " + g.getTotScore() + " startingDate: " + g.getStartingDate() + "\n");
+        }
 
     }
 

@@ -19,7 +19,7 @@ public class GameTests {
         Thread.sleep(2 * 1000);
         Game game2 = new Game("Brasil", "Spain");
         log.info("testCompareGame Output, most recently started game is game n: " + game1.compareDateTo(game2) + "\n");
-        Assert.assertEquals(2, game1.compareDateTo(game2));
+        Assert.assertEquals(-1, game1.compareDateTo(game2));
     }
 
     @Test

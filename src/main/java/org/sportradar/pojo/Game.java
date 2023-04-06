@@ -20,6 +20,9 @@ public class Game {
     private int aScore;
     private String startingDate;
 
+    public Game() {
+    }
+
     public Game(String homeTeam, String awayTeam) {
         log.debug("Game");
         this.homeTeam = homeTeam;
@@ -34,10 +37,14 @@ public class Game {
         Date date1 = dFormatter.parse(this.getStartingDate());
         Date date2 = dFormatter.parse(g.getStartingDate());
 
+        if (date1.equals(date2)) {
+            return 0;
+        }
+
         if (date1.after(date2)) {
             return 1;
         }
-        return 2;
+        return -1;
     }
 
     public String printGameResult() {
