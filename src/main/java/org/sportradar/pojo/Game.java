@@ -12,7 +12,6 @@ import java.util.Date;
 public class Game {
     private static final Logger log = LoggerFactory.getLogger(Game.class);
     private SimpleDateFormat dFormatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-
     private String homeTeam;
     private int totScore;
     private int hScore;
@@ -21,6 +20,7 @@ public class Game {
     private String startingDate;
 
     public Game() {
+        log.debug("Game");
     }
 
     public Game(String homeTeam, String awayTeam) {
@@ -33,7 +33,7 @@ public class Game {
     }
 
     public int compareDateTo(Game g) throws ParseException {
-        log.debug("compareTo");
+        log.debug("compareDateTo");
         Date date1 = dFormatter.parse(this.getStartingDate());
         Date date2 = dFormatter.parse(g.getStartingDate());
 
@@ -104,10 +104,12 @@ public class Game {
     }
 
     public int getTotScore() {
+        log.debug("getTotScore");
         return totScore;
     }
 
     public void calculateTotScore() {
+        log.debug("calculateTotScore");
         this.totScore = aScore + hScore;
     }
 

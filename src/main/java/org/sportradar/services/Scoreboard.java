@@ -61,9 +61,7 @@ public class Scoreboard {
                             if (compareByScore != 0) {
                                 return compareByScore;
                             }
-                            int datecompareRes = game1.compareDateTo(game2);
-
-                            return datecompareRes;
+                            return game1.compareDateTo(game2);
                         } catch (ParseException e) {
                             throw new RuntimeException(e);
                         }
@@ -77,9 +75,9 @@ public class Scoreboard {
     public SortedSet<Game> getSummaryOfGames() throws ParseException {
         log.debug("getSummaryOfGames");
         final Map<Game, Integer> m = new HashMap<Game, Integer>();
-        Set<Game> sg = this.getScoreBoard();
+        Set<Game> sb = this.getScoreBoard();
 
-        for (Game game : sg) {
+        for (Game game : sb) {
             m.put(game, game.getTotScore());
         }
         return sortByTotScore(m);
