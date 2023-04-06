@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.SortedSet;
 
@@ -103,10 +104,22 @@ public class ScoreBoardTests {
         g6.setaScore(4);
         g6.calculateTotScore();
         SortedSet<Game> out = scoreboard.getSummaryOfGames();
-        for (Game g : out) {
-            System.out.println("totScore : " + g.getTotScore() + " startingDate: " + g.getStartingDate() + "\n");
-        }
+        Iterator<Game> iterator = out.iterator();
 
+        while (iterator.hasNext()) {
+            Game gameA = iterator.next();
+            int totScoreA = gameA.getTotScore();
+            if (iterator.hasNext()) {
+                Game gameB = iterator.next();
+                int totScoreB = gameB.getTotScore();
+                boolean conditionOnScore = (totScoreA >= totScoreB);
+                if (totScoreA == totScoreB) {
+                    int condOnDate = gameA.compareDateTo(gameB);
+                    Assert.assertEquals(1, condOnDate);
+                }
+                Assert.assertTrue(conditionOnScore);
+            }
+        }
     }
 
 }
