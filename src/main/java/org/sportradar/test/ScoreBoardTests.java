@@ -85,9 +85,10 @@ public class ScoreBoardTests {
         g0.sethScore(13);
         g0.setaScore(13);
         g0.calculateTotScore();
+        Thread.sleep(2 * 1000);
         Game g1 = scoreboard.startNewGame("Mexico", "Canada");
-        g1.sethScore(1);
-        g1.setaScore(1);
+        g1.sethScore(13);
+        g1.setaScore(13);
         g1.calculateTotScore();
         Game g2 = scoreboard.startNewGame("Ireland", "Malta");
         g2.sethScore(34);
