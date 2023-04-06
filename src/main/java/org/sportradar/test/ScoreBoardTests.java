@@ -41,15 +41,6 @@ public class ScoreBoardTests {
     }
 
     @Test
-    public void testAreGamesEquals() {
-        log.info("testAreGamesEquals");
-        Scoreboard scoreboard = new Scoreboard();
-        Game g1 = scoreboard.startNewGame("Mexico", "Canada");
-        int res = scoreboard.areGamesEqual(g1, g1);
-        Assert.assertEquals(1, res);
-    }
-
-    @Test
     public void testUpdateScoreGame() {
         log.info("testUpdateScoreGame");
         Scoreboard scoreboard = new Scoreboard();

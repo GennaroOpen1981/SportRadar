@@ -34,21 +34,13 @@ public class Scoreboard {
         game.calculateTotScore();
     }
 
-    public int areGamesEqual(Game g1, Game g2) {
-        int result = -1;
-        if (g1.getHomeTeam().equals(g2.getHomeTeam()) && g1.getAwayTeam().equals(g2.getAwayTeam()) && g1.getStartingDate().equals(g2.getStartingDate())) {
-            result = 1;
-        }
-        return result;
-    }
-
     public void finishGame(Game game) {
         log.debug("finishGame");
         scoreBoard.remove(game);
 
     }
 
-    public static SortedSet<Game> sortByTotScore(
+    private static SortedSet<Game> sortByTotScore(
             final Map<Game, Integer> gameTotScoreMap) throws ParseException {
         TreeSet<Game> sortedGamess = new TreeSet<Game>(
                 new Comparator<Game>() {
